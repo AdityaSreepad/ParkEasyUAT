@@ -171,7 +171,7 @@ class Login1(Resource):
         #login_data = request.get_json()
         uname  = str(auth.username) #str(login_data['user_name'])
         passwd = str(auth.password) #str(login_data['password'])
-        return make_response("Validated" : " User Name : "+uname +" Password :"+passwd)
+        return jsonify({"Validated" : " User Name : "+uname +" Password :"+passwd})
 
 class Login(Resource):
     def get(self):
