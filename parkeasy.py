@@ -14,6 +14,7 @@ from flask import Flask , jsonify , request , make_response
 from flask_restful import Resource, Api
 from flask_mysqldb import MySQL
 from functools import wraps
+from flask_cors import CORS, cross_origin
 
 import jwt
 import datetime
@@ -27,6 +28,11 @@ app.config['MYSQL_USER'] = 'root' #'test_user' #'apps'
 app.config['MYSQL_PASSWORD'] ='welcome123' #'test'
 app.config['MYSQL_DB'] = 'test_db'
 
+#To be able to fetch return contents inside react
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+#secret key
 app.config['SECRET_KEY'] = '293hdsfhjdfvvrt*739&872dfhude6zvxbnis7&*w(encer!!ksd' #some random value
 
 mysql = MySQL(app)
@@ -169,6 +175,7 @@ class Register(Resource):
             return jsonify({"status" : "Success" , "message" : "User registration successful"})
 
 class Login1(Resource):
+    @cross_origin()
     def post(self):
         auth = request.authorization
         #login_data = request.get_json()
