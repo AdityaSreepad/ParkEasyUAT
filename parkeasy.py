@@ -118,6 +118,9 @@ class Home(Resource):
     def get(self):
         return {"message" : "welcome: This is a homepage"}
 
+    def post(slef):
+        return {"message" : "Welcome - This is a post request"}
+
 class Signup(Resource):
     def post(self):
         register_data = request.get_json()
@@ -166,7 +169,7 @@ class Register(Resource):
             return jsonify({"status" : "Success" , "message" : "User registration successful"})
 
 class Login1(Resource):
-    def get(self):
+    def post(self):
         auth = request.authorization
         #login_data = request.get_json()
         uname  = str(auth.username) #str(login_data['user_name'])
