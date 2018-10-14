@@ -118,7 +118,7 @@ class Home(Resource):
     def get(self):
         return {"message" : "welcome: This is a homepage"}
 
-class Singup(Resource):
+class Signup(Resource):
 	def post(self):
         reg_data = request.get_json()
         #return jsonify(login_data) , 201
@@ -297,6 +297,7 @@ api.add_resource(History,'/history')
 api.add_resource(PostProperty,'/addproperty')
 api.add_resource(addlocation,'/addlocation')
 api.add_resource(ViewAllPlots,'/viewplots')
+api.add_resource(Signup, '/signup')
 #api.add_resource(Users,'/getuser')
 
 if __name__ == '__main__':
