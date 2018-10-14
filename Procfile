@@ -1,1 +1,1 @@
-web: gunicorn app:parkeasy
+web: gunicorn parkeasy:app
