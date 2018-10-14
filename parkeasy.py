@@ -118,6 +118,24 @@ class Home(Resource):
     def get(self):
         return {"message" : "welcome: This is a homepage"}
 
+class Singup(Resource):
+	def post(self):
+        reg_data = request.get_json()
+        #return jsonify(login_data) , 201
+        uname  = str(reg_data['user_name'])
+        passwd = str(reg_data['password'])
+
+        #connect to Mongo DB
+        app.config['MONGO_DBNAME'] ='park_easy_flask_pymongo_db'
+        app.config['MONGO_URI'] = 'mongodb://superuser:welcome123@ds255930.mlab.com:55930/park_easy_flask_pymongo_db'
+
+        mongo = pyMongo(app)
+
+        user = mongo.db.users
+        user.insert({"name": uname ,"password" : passwd })
+
+        return jsonify({"status" : "Success", "message" : "User registration sucessful, Welcome to ParkEasy "+uname })
+
 class Register(Resource):
     def post(self):
         reg_data = request.get_json()
