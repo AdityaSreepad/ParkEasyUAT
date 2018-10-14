@@ -119,11 +119,11 @@ class Home(Resource):
         return {"message" : "welcome: This is a homepage"}
 
 class Signup(Resource):
-	def post(self):
-        reg_data = request.get_json()
+    def post(self):
+        register_data = request.get_json()
         #return jsonify(login_data) , 201
-        uname  = str(reg_data['user_name'])
-        passwd = str(reg_data['password'])
+        uname  = str(register_data['user_name'])
+        passwd = str(register_data['password'])
 
         #connect to Mongo DB
         app.config['MONGO_DBNAME'] ='park_easy_flask_pymongo_db'
