@@ -165,6 +165,14 @@ class Register(Resource):
             mysql.connection.commit()
             return jsonify({"status" : "Success" , "message" : "User registration successful"})
 
+class Login1(Resource):
+    def get(self):
+        auth = request.authorization
+        #login_data = request.get_json()
+        uname  = str(auth.username) #str(login_data['user_name'])
+        passwd = str(auth.password) #str(login_data['password'])
+        return make_response("Validated" : " User Name : "+uname +" Password :"+passwd)
+
 class Login(Resource):
     def get(self):
                 auth = request.authorization
@@ -293,6 +301,7 @@ class PostProperty(Resource):
 api.add_resource(Home,'/')
 api.add_resource(Register,'/register')
 api.add_resource(Login,'/login')
+api.add_resource(Login1,'/login1')
 api.add_resource(History,'/history')
 api.add_resource(PostProperty,'/addproperty')
 api.add_resource(addlocation,'/addlocation')
