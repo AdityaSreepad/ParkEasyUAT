@@ -15,6 +15,7 @@ from flask_restful import Resource, Api
 from flask_mysqldb import MySQL
 from functools import wraps
 from flask_cors import CORS, cross_origin
+#from flask.ext.pymongo import PyMongo
 
 import jwt
 import datetime
@@ -181,7 +182,9 @@ class Login1(Resource):
         #login_data = request.get_json()
         uname  = str(auth.username) #str(login_data['user_name'])
         passwd = str(auth.password) #str(login_data['password'])
-        return jsonify({"Validated" : " User Name : "+uname +" Password :"+passwd})
+        return jsonify({"status": "Success",
+         "message" : " User Name  "+uname +" Password "+passwd+", login successful ",
+         "token" : "1234"})
 
 class Login(Resource):
     def get(self):
