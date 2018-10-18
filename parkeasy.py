@@ -182,9 +182,14 @@ class Login1(Resource):
         #login_data = request.get_json()
         uname  = str(auth.username) #str(login_data['user_name'])
         passwd = str(auth.password) #str(login_data['password'])
+
+        if len(passwd) <= 2:
+            return make_response('Invalid Password!',401,{'WWW-Authenticate':'Basic realm="Login Failed"'})
+
         return jsonify({"status": "Success",
          "message" : " User Name  "+uname +" Password "+passwd+", login successful ",
          "token" : "1234"})
+
 
 class Login(Resource):
     def get(self):
